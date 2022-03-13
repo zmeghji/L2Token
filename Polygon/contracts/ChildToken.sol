@@ -13,18 +13,6 @@ contract ChildToken is IFxERC20, ERC20 {
          _fxManager = fxManager_;
         _connectedToken = connectedToken_;
     }
-    function initialize(
-        address fxManager_,
-        address connectedToken_,
-        string memory name_,
-        string memory symbol_,
-        uint8 decimals_
-    ) public override {
-        require(_fxManager == address(0x0) && _connectedToken == address(0x0), "Token is already initialized");
-        _fxManager = fxManager_;
-        _connectedToken = connectedToken_;
-
-    }
 
     // fxManager rturns fx manager
     function fxManager() public view override returns (address) {

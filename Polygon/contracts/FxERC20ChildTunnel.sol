@@ -11,19 +11,13 @@ import {IFxERC20} from "./fxPortal/IFxERC20.sol";
 contract FxERC20ChildTunnel is FxBaseChildTunnel, Create2 {
     bytes32 public constant DEPOSIT = keccak256("DEPOSIT");
     bytes32 public constant MAP_TOKEN = keccak256("MAP_TOKEN");
-    string public constant SUFFIX_NAME = " (FXERC20)";
-    string public constant PREFIX_SYMBOL = "fx";
 
     // event for token maping
     event TokenMapped(address indexed rootToken, address indexed childToken);
     // root to child token
     mapping(address => address) public rootToChildToken;
-    // token template
-    address public tokenTemplate;
 
-    constructor(address _fxChild, address _tokenTemplate) FxBaseChildTunnel(_fxChild) {
-        tokenTemplate = _tokenTemplate;
-        require(_isContract(_tokenTemplate), "Token template is not contract");
+    constructor(address _fxChild) FxBaseChildTunnel(_fxChild) {
     }
 
     function withdraw(address childToken, uint256 amount) public {
@@ -52,42 +46,9 @@ contract FxERC20ChildTunnel is FxBaseChildTunnel, Create2 {
 
         if (syncType == DEPOSIT) {
             _syncDeposit(syncData);
-        } else if (syncType == MAP_TOKEN) {
-            _mapToken(syncData);
         } else {
             revert("FxERC20ChildTunnel: INVALID_SYNC_TYPE");
         }
-    }
-
-    function _mapToken(bytes memory syncData) internal returns (address) {
-        (address rootToken, string memory name, string memory symbol, uint8 decimals) = abi.decode(
-            syncData,
-            (address, string, string, uint8)
-        );
-
-        // get root to child token
-        address childToken = rootToChildToken[rootToken];
-
-        // check if it's already mapped
-        require(childToken == address(0x0), "FxERC20ChildTunnel: ALREADY_MAPPED");
-
-        // deploy new child token
-        bytes32 salt = keccak256(abi.encodePacked(rootToken));
-        childToken = createClone(salt, tokenTemplate);
-        IFxERC20(childToken).initialize(
-            address(this),
-            rootToken,
-            string(abi.encodePacked(name, SUFFIX_NAME)),
-            string(abi.encodePacked(PREFIX_SYMBOL, symbol)),
-            decimals
-        );
-
-        // map the token
-        rootToChildToken[rootToken] = childToken;
-        emit TokenMapped(rootToken, childToken);
-
-        // return new child token
-        return childToken;
     }
 
     function _syncDeposit(bytes memory syncData) internal {

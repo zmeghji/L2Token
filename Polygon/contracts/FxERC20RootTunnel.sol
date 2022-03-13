@@ -10,9 +10,8 @@ import {SafeERC20, IERC20} from "@openzeppelin/contracts/token/ERC20/utils/SafeE
  */
 contract FxERC20RootTunnel is FxBaseRootTunnel, Create2 {
     using SafeERC20 for IERC20;
-    // maybe DEPOSIT and MAP_TOKEN can be reduced to bytes4
+    // maybe DEPOSIT can be reduced to bytes4
     bytes32 public constant DEPOSIT = keccak256("DEPOSIT");
-    bytes32 public constant MAP_TOKEN = keccak256("MAP_TOKEN");
 
     event TokenMappedERC20(address indexed rootToken, address indexed childToken);
     event FxWithdrawERC20(
@@ -29,46 +28,15 @@ contract FxERC20RootTunnel is FxBaseRootTunnel, Create2 {
     );
 
     mapping(address => address) public rootToChildTokens;
-    bytes32 public childTokenTemplateCodeHash;
 
     constructor(
         address _checkpointManager,
         address _fxRoot,
         address _fxERC20Token
     ) FxBaseRootTunnel(_checkpointManager, _fxRoot) {
-        // compute child token template code hash
-        childTokenTemplateCodeHash = keccak256(minimalProxyCreationCode(_fxERC20Token));
     }
 
-    //TODO consider removing this and dependent methods includin in the child tunnel
-    /**
-     * @notice Map a token to enable its movement via the PoS Portal, callable only by mappers
-     * @param rootToken address of token on root chain
-     */
-    function mapToken(address rootToken) public {
-        // check if token is already mapped
-        require(rootToChildTokens[rootToken] == address(0x0), "FxERC20RootTunnel: ALREADY_MAPPED");
 
-        // name, symbol and decimals
-        ERC20 rootTokenContract = ERC20(rootToken);
-        string memory name = rootTokenContract.name();
-        string memory symbol = rootTokenContract.symbol();
-        uint8 decimals = rootTokenContract.decimals();
-
-        // MAP_TOKEN, encode(rootToken, name, symbol, decimals)
-        bytes memory message = abi.encode(MAP_TOKEN, abi.encode(rootToken, name, symbol, decimals));
-        _sendMessageToChild(message);
-
-        // compute child token address before deployment using create2
-        bytes32 salt = keccak256(abi.encodePacked(rootToken));
-        address childToken = computedCreate2Address(salt, childTokenTemplateCodeHash, fxChildTunnel);
-
-        // add into mapped tokens
-        rootToChildTokens[rootToken] = childToken;
-        emit TokenMappedERC20(rootToken, childToken);
-    }
-
-    //TODO method for mapping tokens when child token is already deployed 
     function mapToken(address rootToken, address childToken) public {
         require(rootToChildTokens[rootToken] == address(0x0), "FxERC20RootTunnel: ALREADY_MAPPED");
         rootToChildTokens[rootToken] = childToken;
@@ -82,10 +50,7 @@ contract FxERC20RootTunnel is FxBaseRootTunnel, Create2 {
         uint256 amount,
         bytes memory data
     ) public {
-        // map token if not mapped
-        if (rootToChildTokens[rootToken] == address(0x0)) {
-            mapToken(rootToken);
-        }
+        require(rootToChildTokens[rootToken] != address(0x0), "FxERC20RootTunnel: TOKEN NOT MAPPED");
 
         // transfer from depositor to this contract
         IERC20(rootToken).safeTransferFrom(
