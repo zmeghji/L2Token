@@ -112,4 +112,10 @@ contract FxERC20ChildTunnel is FxBaseChildTunnel, Create2 {
         }
         return (size > 0);
     }
+
+    function mapToken(address rootToken, address childToken) public {
+        require(rootToChildToken[rootToken] == address(0x0), "FxERC20ChildTunnel: ALREADY_MAPPED");
+        rootToChildToken[rootToken] = childToken;
+        emit TokenMapped(rootToken, childToken);
+    }
 }

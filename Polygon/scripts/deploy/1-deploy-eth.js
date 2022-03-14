@@ -2,7 +2,17 @@ const hre = require("hardhat");
 
 
 async function main(){
+    let checkpointManager = "0x2890bA17EfE978480615e330ecB65333b880928e";
+    let fxRoot = "0x3d1d3E34f7fB6D26245E6640E1c50710eFFf15bA";
+
     const deployer = (await hre.ethers.getSigners())[0];
+    
+    //Deploy Token on Ethereum 
+    let rootToken = await deploy("RootToken", []);
+
+    //Deploy Root Tunnel
+    let rootTunnel = await deploy("FxERC20RootTunnel", [checkpointManager, fxRoot]);
+
 }
 
 async function deploy(contractName, constructorArgs){

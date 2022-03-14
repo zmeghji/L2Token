@@ -31,8 +31,7 @@ contract FxERC20RootTunnel is FxBaseRootTunnel, Create2 {
 
     constructor(
         address _checkpointManager,
-        address _fxRoot,
-        address _fxERC20Token
+        address _fxRoot
     ) FxBaseRootTunnel(_checkpointManager, _fxRoot) {
     }
 
