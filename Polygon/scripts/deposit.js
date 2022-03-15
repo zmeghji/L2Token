@@ -20,7 +20,8 @@ async function main(){
 
     //deposit tokens to polygon chain
     console.log ("deposit tokens to polygon from root tunnel")
-    await rootTunnel.deposit(rootTokenAddress, deployer.address, amount, hre.ethers.utils.formatBytes32String(""));
+    await rootTunnel.deposit(rootTokenAddress, 
+      deployer.address, amount, hre.ethers.utils.formatBytes32String(""));
 
 }
 

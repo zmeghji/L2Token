@@ -25,6 +25,7 @@ async function main(){
     console.log("transaction hash: " + tx.hash);
 
     //0x7f4c900cc61e5391fefead925350874f9fe415126761cf1b31bd934e2ed88510
+    //0xdebc69705ddfc56527fa954d47ef810908ff415f9b74566ca9b4ce1c1a319c8b
 }
 
 main()
