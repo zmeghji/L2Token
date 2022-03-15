@@ -51,9 +51,6 @@ async function main() {
     )
     console.log(`proof.length: ${proof.length}`);
 
-    console.log("test: " + hre.ethers.utils.isBytes(hre.ethers.utils.toUtf8Bytes(proof)));
-    console.log("test: " + hre.ethers.utils.isBytes(proof));
-    console.log("test: " + hre.ethers.utils.isHexString(proof));
     const rootTunnel = await hre.ethers.getContractAt("FxERC20RootTunnel", rootTunnelAddress);
     console.log("submitting burn proof on root chain to withdraw tokens")
     await rootTunnel.receiveMessage(hre.ethers.utils.hexlify(proof));
