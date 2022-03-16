@@ -2,18 +2,6 @@ const hre = require("hardhat");
 
 
 async function main(){
-    
-
-    // let rootTunnelAddress= process.argv[2];
-    // let rootTokenAddress= process.argv[3];
-
-    // if (!rootTunnelAddress || rootTunnelAddress == ""){
-    //     throw "Provide root tunnel address as first parameter please"
-    // }
-
-    // if (!rootTokenAddress || rootTokenAddress == ""){
-    //     throw "Provide root token address as first parameter please"
-    // }
 
     let rootTunnelAddress = "0x28a717D0419c4207bac8aCB658Ad6B90124A5044";
     let rootTokenAddress = "0x5A9C69ce46F770AAD768604Ac382873133C094c3";
