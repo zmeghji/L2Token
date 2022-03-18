@@ -4,6 +4,7 @@
   },
   "devDependencies": {
     "@nomiclabs/hardhat-waffle": "^2.0.3",
+    "arb-ts": "^1.0.2",
     "dotenv": "^16.0.0",
     "hardhat": "^2.9.1",
     "hardhat-gas-reporter": "^1.0.8",
