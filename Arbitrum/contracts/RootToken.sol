@@ -16,7 +16,7 @@ contract RootToken is ERC20,ICustomToken {
     constructor(address _gateway, address _router) ERC20("LayerTwo Token", "LTWO") {
         gateway = _gateway;
         router = _router;
-        _mint(msg.sender, 1000000);
+        _mint(msg.sender, 1000000 ether );
     }
 
     function transferFrom(
