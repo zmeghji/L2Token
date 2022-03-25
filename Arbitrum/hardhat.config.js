@@ -12,11 +12,11 @@ module.exports = {
  networks: {
    rinkeby: {
      url: process.env.RINKEBY_URL || "",
-     accounts: [process.env.PRIVATE_KEY] 
+     accounts: [process.env.PRIVATE_KEY]
    },
    arbitrumTestnet: {
     url: process.env.ARBITRUM_TESTNET_URL || "",
-    accounts:[process.env.PRIVATE_KEY] 
+    accounts:[process.env.PRIVATE_KEY]
   }
  }
 };

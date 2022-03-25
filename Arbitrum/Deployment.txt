@@ -1,8 +1,10 @@
 Deploying RootToken 
-RootToken deployed to: 0x35A56B1f6bfAEF5D10A67f988dE0911f030DF6ff
+RootToken deployed to: 0x2cA567128f580be0D74610610527fdF7BD637Bdf
 Deploying ChildToken 
-ChildToken deployed to: 0x13e1Bc132A089F6b894b08cc800a82519C8e5cfF
-Cost for retryable ticket submission for custom bridge is 15300497066
-Cost for retryable ticket submission for router is 15300497066
-L2 gas price: 67299287
-Total eth call value: 1346016340994132
+ChildToken deployed to: 0x59A2016B34d82EDe3eE5a0552703c73913B4bc60
+18:52:07 GMT-0400 (Eastern Daylight Time) - Registering Token on Arbitrum
+18:52:22 GMT-0400 (Eastern Daylight Time) - Registering token complete on layer 1. Transaction has 0x721b43f75eafa25052cbe29b78f86b29315dd1eaee42c4c7249c11b6bc1db08e
+18:52:23 GMT-0400 (Eastern Daylight Time) - checking number of l1 to l2 messages
+18:52:23 GMT-0400 (Eastern Daylight Time) - Wait for setTokenTx
+18:56:05 GMT-0400 (Eastern Daylight Time) - Wait for setGatewaysTx
+18:56:06 GMT-0400 (Eastern Daylight Time) - token is now registered on the custom gateway 
