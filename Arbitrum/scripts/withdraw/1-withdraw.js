@@ -31,7 +31,9 @@ const main = async () => {
 
     logWithTime(`withdrawTx hash:  ${withdrawTx.hash}`)
     //0x9e9031e606d4d999c4dfd02fd4ef68e1789cd4ac8dbd41955787122b7bdf5c77
+    //0xf989f381b40d99014384a5f8a4f08cf324b6969a3e0ad4d2bfa2b8857897aca0
     const withdrawRec = await withdrawTx.wait()
+    logWithTime(`withdrawRec hash:  ${withdrawRec.transactionHash}`)
 
     logWithTime("Finished initiating withdrawal from L2")
     
