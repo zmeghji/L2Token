@@ -43,7 +43,7 @@ This is an implementation of an Ethereum-Polygon bridge for a custom ERC-20 toke
     ```
 
 ## Withdraw 💵
-1. Edit 1-withdraw-poly.js with the correct child token address and child tunnel address, then run it. Make a note of the outputted transaction hash as this will be required to complete the withdrawals.
+1. Edit 1-withdraw-poly.js with the correct child token address and child tunnel address, then run it. Make a note of the outputted transaction hash as this will be required to complete the withdrawal.
     ```
     npx hardhat run .\scripts\withdraw\1-withdraw-poly.js --network polygon
     ```

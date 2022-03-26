@@ -6,7 +6,6 @@ require('dotenv').config()
 
 
 let rootTokenAddress = "0xA163301ED403aBbf637A9119593c07eec212fD0B";
-let childTokenAddress = "0x2830b7F3475dD3b80216A66d4eE461E973dCD09A";
 
 const walletPrivateKey = process.env.PRIVATE_KEY
 
