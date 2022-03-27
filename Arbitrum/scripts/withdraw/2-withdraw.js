@@ -35,7 +35,7 @@ const main = async () => {
     logWithTime("getting required proof for withdrawal")
     const proofInfo = await l2ToL1Msg.tryGetProof(l2Provider)
 
-    if(await l2ToL1Msg.hasExecuted()) {
+    if(await l2ToL1Msg.hasExecuted(proofInfo)) {
         logWithTime("withdrawal already completed")
     }
     else{
