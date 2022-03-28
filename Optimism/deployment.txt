@@ -1,0 +1,5 @@
+20:12:44 GMT-0400 (Eastern Daylight Time) - Deploying RootToken 
+20:12:56 GMT-0400 (Eastern Daylight Time) - RootToken deployed to: 0x1836648191Ca81AB5118d824D432E49ffeb906E8
+20:12:58 GMT-0400 (Eastern Daylight Time) - Deploying ChildToken 
+20:13:07 GMT-0400 (Eastern Daylight Time) - ChildToken deployed to: 0x02515b1763f45d6573Dc72a9bbf3FE74BA4FB089
+20:13:07 GMT-0400 (Eastern Daylight Time) - Deployment successful
