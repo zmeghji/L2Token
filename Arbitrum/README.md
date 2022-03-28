@@ -6,7 +6,7 @@ This is an example of a custom token which has been deployed to both Ethereum an
    ```
    git clone https://github.com/zmeghji/L2Token.git
    ```
-2. Cd into Polygon directory
+2. Cd into Arbitrum directory
    ```
    cd Arbitrum/
    ```
