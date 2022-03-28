@@ -32,9 +32,7 @@ async function main() {
     );
     await tx.wait()
     
-    logWithTime(`Transaction complete: ${tx.hash}. Once the dispute period is over, the tokens should have been withdrawn`)
-    //0xc8b0e7caa731e8eb733ae8edc47adc4b7bd497cc5dde2b31abe8f9e3684be024
-    
+    logWithTime(`Transaction complete: ${tx.hash}. Once the dispute period is over, the withdrawal can be completed`)
 
 }
 
