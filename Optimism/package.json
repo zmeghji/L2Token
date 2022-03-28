@@ -1,0 +1,14 @@
+{
+  "devDependencies": {
+    "@nomiclabs/hardhat-waffle": "^2.0.3",
+    "@openzeppelin/contracts": "^4.5.0",
+    "dotenv": "^16.0.0",
+    "hardhat": "^2.9.2",
+    "hardhat-gas-reporter": "^1.0.8",
+    "solidity-coverage": "^0.7.20"
+  },
+  "dependencies": {
+    "@eth-optimism/contracts": "^0.0.0-2021915193618",
+    "@eth-optimism/core-utils": "^0.0.0-2021915193618"
+  }
+}

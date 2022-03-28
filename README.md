@@ -4,3 +4,5 @@ A custom token which has been deployed to three different layer two networks: Po
 - [Arbitrum](https://github.com/zmeghji/L2Token/tree/main/Arbitrum)
 
 ## Tools, Languages & Frameworks Used🛠️
+- Hardhat/Solidity
+- JavaScript/Matic.js/Arbitrum SDK
